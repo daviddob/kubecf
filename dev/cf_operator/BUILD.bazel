@@ -8,18 +8,21 @@ helm_template(
     name = "rendered_template",
     values = glob(["**/*values.yaml"]),
     install_name = "cf-operator",
-    namespace = project.namespace,
+    namespace = project.external_files["cf_operator"].namespace,
+    set_values = {
+        "global.operator.watchNamespace": project.namespace,
+    },
     chart_package = "@cf_operator//file",
 )
 
 kubectl_apply_binary(
     name = "apply",
     resource = ":rendered_template",
-    namespace = project.namespace,
+    namespace = project.external_files["cf_operator"].namespace,
 )
 
 kubectl_delete_binary(
     name = "delete",
     resource = ":rendered_template",
-    namespace = project.namespace,
+    namespace = project.external_files["cf_operator"].namespace,
 )

@@ -178,6 +178,7 @@ filegroup(
             urls = ["https://cf-operators.s3.amazonaws.com/release/helm-charts/cf-operator-{version}"],
             sha256 = "5bf0b698bc1f984f3f98a60d636ad5820b7486cfd426597b9ca64f69b01b6e96",
             version = "3.0.0%2B0.g4e1038ed",
+            namespace = "cfo",
         ),
         "kube_dashboard": struct(
             urls = ["https://raw.githubusercontent.com/kubernetes/dashboard/{version}/aio/deploy/recommended.yaml"],
